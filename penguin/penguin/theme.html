@@ -1,0 +1,164 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="<{$xoops_langcode}>" lang="<{$xoops_langcode}>">
+<head>
+<meta http-equiv="content-type" content="text/html; charset=<{$xoops_charset}>" />
+<meta http-equiv="content-language" content="<{$xoops_langcode}>" />
+<meta name="robots" content="<{$xoops_meta_robots}>" />
+<meta name="keywords" content="<{$xoops_meta_keywords}>" />
+<meta name="description" content="<{$xoops_meta_description}>" />
+<meta name="rating" content="<{$xoops_meta_rating}>" />
+<meta name="author" content="<{$xoops_meta_author}>" />
+<meta name="copyright" content="<{$xoops_meta_copyright}>" />
+<meta name="generator" content="XOOPS" />
+<title><{$xoops_sitename}> - <{$xoops_pagetitle}></title>
+<link href="<{$xoops_url}>/favicon.ico" rel="SHORTCUT ICON" />
+<link rel="stylesheet" type="text/css" media="all" href="<{$xoops_url}>/xoops.css" />
+<link rel="stylesheet" type="text/css" media="all" href="<{$xoops_themecss}>" />
+<script type="text/javascript">
+<!--
+<{$xoops_js}>
+//-->
+</script>
+</head>
+
+<body>
+<table cellspacing="0" class="main">
+<tr>
+<td id="headerlogo">
+<a href="<{$xoops_url}>/">
+<img src="<{$xoops_imageurl}>logo.gif" alt="<{$xoops_sitename}>" />
+</a>
+</td>
+</tr>
+
+<tr>
+<td id="header">　</td>
+</tr>
+
+<tr>
+<td id="headerbar">
+	<{if !$xoops_isuser}>
+	<img src="<{$xoops_imageurl}>dot.gif" width=10px height=10px><br>
+	<form action="<{$xoops_url}>/user.php" method="post">ログイン名 
+	<input type="text" name="uname" value="username" size=12 onMouseOver="this.focus();" onFocus="if(this.value == 'username') this.value = '';">
+	パスワード <input type="password" size="8" name="pass">
+	<input type="hidden" name="op" value="login"> 
+	<input type="submit" value="OK">
+	<img src="<{$xoops_imageurl}>dot.gif" width=10px height=10px><br>
+	<a href="<{$xoops_url}>/register.php">新規登録の方はこちらから</a>
+	<img src="<{$xoops_imageurl}>dot.gif" width=10px height=10px><br>
+
+	</form>
+	<{else}>
+	<form action="<{$xoops_url}>/search.php" method="get">
+	<img src="<{$xoops_imageurl}>dot.gif" width=10px height=10px><br>
+	<input type="text" name="query" size="20"/>
+	<input type="hidden" name="action" value="results" />
+	<input type="submit" name="searchSubmit" value="検索" />
+	<img src="<{$xoops_imageurl}>dot.gif" width=10px height=10px>
+	</form>
+	<{/if}>
+</td>
+</tr>
+</table>
+
+
+<table cellspacing="0" class="main">
+<tr>
+<td id="leftcolumn">
+
+	<!-- Start left blocks loop -->
+	<{foreach item=block from=$xoops_lblocks}>
+	<{if $block.title !="User Menu"}>
+	<div class="<{cycle values = "g01,g02,g03,g04,g05,g06,g07,g08"}>">
+	<{$block.title}></div>
+	<div class="blockContent"><{$block.content}></div>
+	<{/if}>
+	<{/foreach}>
+	<!-- End left blocks loop -->
+
+</td>
+
+<td id="centercolumn">
+
+	<!-- Display center blocks if any -->
+	<{if $xoops_showcblock == 1}>
+
+	<table cellspacing="0">
+	<tr>
+	<td id="centerCcolumn" colspan="2">
+
+	<!-- Start center-center blocks loop -->
+	<{foreach item=block from=$xoops_ccblocks}>
+	<div style="padding: 5px;">
+	<div class="blockTitle"><{$block.title}></div>
+	<div class="blockContent"><{$block.content}></div>
+	</div>
+	<{/foreach}>
+	<!-- End center-center blocks loop -->
+
+	</td>
+	</tr>
+
+	<tr>
+	<td id="centerLcolumn">
+
+	<!-- Start center-left blocks loop -->
+	<{foreach item=block from=$xoops_clblocks}>
+    <div class="blockTitle"><{$block.title}></div>
+    <div class="blockContent"><{$block.content}></div>
+	<{/foreach}>
+    <!-- End center-left blocks loop -->
+
+	</td>
+	<td id="centerRcolumn">
+
+	<!-- Start center-right blocks loop -->
+	<{foreach item=block from=$xoops_crblocks}>
+	<div style="padding: 0px 5px 0px 0px;">
+    <div class="blockTitle"><{$block.title}></div>
+    <div class="blockContent"><{$block.content}></div>
+	</div>
+	<{/foreach}>
+    <!-- End center-right blocks loop -->
+
+	</td>
+	</tr>
+	</table>
+
+	<{/if}>
+	<!-- End display center blocks -->
+
+	<div id="content"><{$xoops_contents}></div>
+
+</td>
+
+	<{if $xoops_showrblock == 1}>
+
+<td id="rightcolumn">
+
+	<!-- Start right blocks loop -->
+	<{foreach item=block from=$xoops_rblocks}>
+	<div class="blockTitle"><{$block.title}></div>
+    <div class="blockContent"><{$block.content}></div>
+	</div>
+    <{/foreach}>
+	<!-- End right blocks loop -->
+
+</td>
+
+	<{/if}>
+
+</tr>
+</table>
+
+<table cellspacing="0" class="main">
+<tr>
+<td id="footerbar">Copyright &copy; 2003 - <{$xoops_sitename}><br>
+PHP + MySQL + Xoops2.05
+</td>
+</tr>
+</table>
+
+</body>
+</html>
